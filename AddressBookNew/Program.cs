@@ -19,6 +19,10 @@ namespace AddressBookNew
             //contactDetails.DeleteContact();
             //// uc- 6
             //contactDetails.AddNewAddressBook();
+            //uc-8
+            contactDetails.ViewByCityOrState("mumbai");
+            Console.ReadLine();
+
             ////uc-13
             //contactDetails.Writefile(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactListFile.json");
             //contactDetails.ReadFile(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactListFile.json");
