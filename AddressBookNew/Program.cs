@@ -6,7 +6,7 @@ namespace AddressBookNew
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to addressBook management");
+            Console.WriteLine("Welcome to addressBook management system");
         }
     }
 }
