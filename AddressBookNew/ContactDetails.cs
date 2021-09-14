@@ -197,6 +197,40 @@ namespace AddressBookNew
             string jsoncontact = JsonConvert.SerializeObject(cont, Formatting.Indented);
             File.WriteAllText(filepath, jsoncontact);
         }
+        public void ReadFile(string filepath)
+        {
+            string jsonstr = File.ReadAllText(filepath);
+
+
+            List<Contact> cont = (List<Contact>)JsonConvert.DeserializeObject<List<Contact>>(jsonstr);
+            foreach (Contact ct in cont)
+            {
+                Console.WriteLine(ct.FirstName + "\t" + ct.Phone + "\t" + ct.Address + "\t" + ct.City + "\t" + ct.State + "\t" + ct.Zip);
+            }
+        }
+        //uc-14
+        public void WriteDataIntoCsv(string filepath)
+        {
+            string jsonstr = File.ReadAllText(filepath);
+            List<Contact> cont;
+            if (jsonstr.Length != 0)
+            {
+                cont = (List<Contact>)JsonConvert.DeserializeObject<List<Contact>>(jsonstr);
+            }
+            else
+            {
+                cont = new List<Contact>();
+            }
+            var newContact = AddContact();
+            //cont.Add(newContact)
+            foreach (Contact ct in newContact)
+            {
+                cont.Add(ct);
+            }
+            Console.WriteLine("Contact Successfully added");
+            string jsoncontact = JsonConvert.SerializeObject(cont, Formatting.Indented);
+            File.WriteAllText(filepath, jsoncontact);
+        }
 
 
     }
