@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace AddressBookNew
 {
     class ContactDetails
     {
         List<Contact> contactlist = new List<Contact>();
+        //uc-6
+        public static Dictionary<string, List<Contact>> contactsDictionary = new Dictionary<string, List<Contact>>();
         public void AddContact()
         {
 
@@ -103,10 +106,51 @@ namespace AddressBookNew
                 }
 
             }
-            Display();
-
-
-
         }
+        Display();
+        public void AddNewAddressBook()
+        {
+            Console.Write("Creating a new AddressBook. " + "\nPlease Enter Name : ");
+            string NewadrBookName = Console.ReadLine();
+            if (contactsDictionary.ContainsKey(NewadrBookName))
+            {
+                Console.WriteLine(" This name already exists.. Please add new name..");
+                AddNewAddressBook();
+            }
+            else
+            {
+                Console.WriteLine("List of Address Books : ");
+                Console.WriteLine("------------------------");
+                foreach (var ab in contactsDictionary)
+                {
+                    Console.Write("\t" + ab.Key);
+                }
+                Console.WriteLine("Adding person details on new addressbook");
+                var newContact = AddContact();
+                contactsDictionary.Add(NewadrBookName, newContact);
+                DisplayContacts(NewadrBookName);
+            }
+        }
+        //uc-6
+        static void DisplayContacts(string AddNewAddressBook)
+        {
+
+            if (contactsDictionary[AddNewAddressBook].Count > 0)
+            {
+                Console.WriteLine(" Displaying contacts in addresss book : " + AddNewAddressBook);
+                foreach (Contact person in contactsDictionary[AddNewAddressBook])
+                {
+                    Console.WriteLine(person.FirstName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(" No contacts Present. Please add new contact. \n");
+            }
+        }
+
+
+
+
     }
 }
