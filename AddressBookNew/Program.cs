@@ -9,9 +9,11 @@ namespace AddressBookNew
             Console.WriteLine("Welcome to addressBook management system");
             //uc-2
             ContactDetails contactDetails = new ContactDetails();
-            //uc-5 // uc 7
+            //uc-5 // uc 7 duplicate entry check at the time of new entry
+
             contactDetails.AddContact();
             //uc-3
+
             //contactDetails.EditContact();
             ////uc4
             //contactDetails.DeleteContact();
@@ -23,7 +25,7 @@ namespace AddressBookNew
             // uc-14
             //contactDetails.WriteDataIntoCsv(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactCSvFile.csv");
             //uc-15
-            contactDetails.ReadDataFromcsvFile(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactCSvFile.csv");
+            //contactDetails.ReadDataFromcsvFile(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactCSvFile.csv");
         }
     }
 }
