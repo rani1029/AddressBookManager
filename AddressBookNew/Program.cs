@@ -7,6 +7,9 @@ namespace AddressBookNew
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to addressBook management system");
+            //uc-2
+            ContactDetails contactDetails = new ContactDetails();
+            contactDetails.AddContact();
         }
     }
 }
