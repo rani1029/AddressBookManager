@@ -20,8 +20,10 @@ namespace AddressBookNew
             ////uc-13
             //contactDetails.Writefile(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactListFile.json");
             //contactDetails.ReadFile(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactListFile.json");
-            contactDetails.WriteDataIntoCsv(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactCSvFile.csv");
-
+            // uc-14
+            //contactDetails.WriteDataIntoCsv(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactCSvFile.csv");
+            //uc-15
+            contactDetails.ReadDataFromcsvFile(@"C:\Users\admin\Desktop\Terminalcommands\cloned_masterCsharpprograms\AddressBookManager\AddressBookNew\ContactCSvFile.csv");
         }
     }
 }

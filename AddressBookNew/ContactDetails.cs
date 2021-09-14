@@ -232,6 +232,22 @@ namespace AddressBookNew
             File.WriteAllText(filepath, jsoncontact);
         }
 
+        //uc-15
+        public void ReadDataFromcsvFile(String filepath)
+        {
+            Console.WriteLine("\n Reading contacts from text file  ");
+            StreamReader file = new StreamReader(filepath);
+            using (file)
+            {
+                string data;
+                while ((data = file.ReadLine()) != null)
+                {
+                    Console.WriteLine(data);
+                }
+            }
+        }
+
+
 
     }
 }
