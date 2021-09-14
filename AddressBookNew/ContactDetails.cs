@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace AddressBookNew
 {
@@ -16,6 +18,13 @@ namespace AddressBookNew
             //adding contacts 
             Console.WriteLine("Enter your first Name");
             var FirstName = Console.ReadLine();
+            //uc-7
+            bool CheckNewEntry = DuplicateNameCheck(FirstName);
+            if (CheckNewEntry)
+            {
+                Console.WriteLine("Name already exist pls enter new entry");
+                AddContact();
+            }
             Console.WriteLine("Enter Phone Number");
             var Phone = long.Parse(Console.ReadLine());
             Console.WriteLine("Enter Address");
@@ -31,9 +40,14 @@ namespace AddressBookNew
         }
         public void Display()
         {
-            foreach (Contact con in contactlist)
+            if (contactlist.Count > 0)
             {
-                Console.WriteLine(con.FirstName + "  " + con.Phone + "  " + con.Address + "  " + con.City + "  " + con.State + "  " + con.Zip);
+
+                foreach (Contact con in contactlist)
+                {
+
+                    Console.WriteLine(con.FirstName + "  " + con.Phone + "  " + con.Address + "  " + con.City + "  " + con.State + "  " + con.Zip);
+                }
             }
         }
         // uc-3
@@ -107,7 +121,7 @@ namespace AddressBookNew
 
             }
         }
-        Display();
+
         public void AddNewAddressBook()
         {
             Console.Write("Creating a new AddressBook. " + "\nPlease Enter Name : ");
@@ -148,8 +162,41 @@ namespace AddressBookNew
                 Console.WriteLine(" No contacts Present. Please add new contact. \n");
             }
         }
+        //uc-7
+        public bool DuplicateNameCheck(string searchName)
+        {
+            bool isPresent = contactlist.Any(e => (e.FirstName.ToLower().Equals(searchName.ToLower())));
+            if (isPresent)
+            {
 
+                return true;
+            }
+            return false;
+        }
+        //uc-13
 
+        public void Writefile(string filepath)
+        {
+            string jsonstr = File.ReadAllText(filepath);
+            List<Contact> cont;
+            if (jsonstr.Length != 0)
+            {
+                cont = (List<Contact>)JsonConvert.DeserializeObject<List<Contact>>(jsonstr);
+            }
+            else
+            {
+                cont = new List<Contact>();
+            }
+            var newContact = AddContact();
+            //cont.Add(newContact)
+            foreach (Contact ct in newContact)
+            {
+                cont.Add(ct);
+            }
+            Console.WriteLine("Contact Successfully added");
+            string jsoncontact = JsonConvert.SerializeObject(cont, Formatting.Indented);
+            File.WriteAllText(filepath, jsoncontact);
+        }
 
 
     }
