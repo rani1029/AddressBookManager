@@ -86,10 +86,27 @@ namespace AddressBookNew
                 }
 
             }
+        }
+        //uc-4
+        public void DeleteContact()
+        {
 
+            Console.WriteLine(" enter firstName to delete the contact ");
+            string UserFirstname = Console.ReadLine();
+            foreach (Contact con in contactlist)
+            {
+                // Console.WriteLine(con.FirstName + "  " + con.Phone + "  " + con.Address + "  " + con.City + "  " + con.State + "  " + con.Zip);
+                if (con.FirstName.Equals(UserFirstname))
+                {
+                    contactlist.Remove(con);
+                    break;
+                }
 
+            }
+            Display();
 
 
 
         }
     }
+}
