@@ -10,6 +10,7 @@ namespace AddressBookNew
             //uc-2
             ContactDetails contactDetails = new ContactDetails();
             contactDetails.AddContact();
+            contactDetails.EditContact();
         }
     }
 }
